@@ -1,0 +1,13 @@
+@media screen and (max-width: 440px) {
+    .toolbar-container {
+        font-size: smaller !important;
+        width:100%;
+    }
+    .toolbar-container > * {
+        margin: 0 !important;
+    }
+    .toolbar-container > * > * {
+        font-size: smaller !important;
+        font-weight: bolder;
+    }
+}
