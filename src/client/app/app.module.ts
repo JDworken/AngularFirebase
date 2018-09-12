@@ -1,7 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { MatToolbarModule, MatButtonModule, MatIconModule, MatIconRegistry } from "@angular/material";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatToolbarModule, 
+  MatButtonModule, 
+  MatIconModule, 
+  MatIconRegistry, 
+  MatFormFieldModule,
+  MatInputModule } from "@angular/material";
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
@@ -21,6 +27,8 @@ import { environment } from '../environments/environment';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     BrowserAnimationsModule,
@@ -28,6 +36,8 @@ import { environment } from '../environments/environment';
     MatToolbarModule,
     MatButtonModule,
     MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

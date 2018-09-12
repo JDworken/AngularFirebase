@@ -10,6 +10,7 @@
           </span>
           <span *ngIf="afAuth.user | async as user; else showLogin">
             <button mat-button style="font-size: large;">Hello {{user.displayName}}</button>
+            <button mat-button style="font-size: large;" (click)="logout()">Log Out</button>
           </span>
           <ng-template #showLogin>
             <span style="margin-left: 30px;">
@@ -35,5 +36,15 @@
 <div style="font-weight:bolder">
     Hello World! From Jason!
 </div>
+<form (ngSubmit)="createUser(email.value, password.value)" #newUserForm>
+  <mat-form-field>
+    <input matInput placeholder="Enter your email" [formControl]="email" required>
+    <mat-error *ngIf="email.invalid">ERROR</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input #password matInput placeholder="Password" type="password" required>
+  </mat-form-field>
+  <button mat-raised-button type="submit" >Create User</button>
+</form>
 
 <router-outlet></router-outlet>
