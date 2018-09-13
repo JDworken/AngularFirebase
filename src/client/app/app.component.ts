@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AngularFireAuth } from "@angular/fire/auth";
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/firestore";
+import { Observable } from "rxjs";
 
 import { PwaService } from "./pwa.service";
 import { auth } from 'firebase';
@@ -13,8 +15,9 @@ import { auth } from 'firebase';
 export class AppComponent {
   title = 'app';
   email = new FormControl('', [Validators.required, Validators.email]);
-
-  constructor(public Pwa: PwaService, public afAuth: AngularFireAuth){
+  usersCollection: AngularFirestoreCollection<any>;
+  users: Observable<any[]>;
+  constructor(public Pwa: PwaService, public afAuth: AngularFireAuth, public afFs: AngularFirestore){
 
   }
 
@@ -28,6 +31,9 @@ export class AppComponent {
       result => {
         console.log(result);
         this.afAuth.user.subscribe(user =>{
+          this.usersCollection = this.afFs.collection<any>('users');
+          this.users = this.usersCollection.valueChanges();
+          
           
         })
       }
@@ -36,6 +42,7 @@ export class AppComponent {
   }
 
   logout():void{
+    
     this.afAuth.auth.signOut().then(
       result => {
         console.log(result);
@@ -52,6 +59,7 @@ export class AppComponent {
           photoURL: ''
         });
         result.user.sendEmailVerification();
+        this.usersCollection.add({name: {first: 'test', middle: '', last:'test'}});
       }
     )
   }
