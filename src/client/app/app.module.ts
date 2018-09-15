@@ -11,6 +11,8 @@ import { MatToolbarModule,
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { ParticlesModule } from "angular-particle";
+import { ParticleEffectButtonModule } from 'angular-particle-effect-button';
 
 import { AppComponent } from './app.component';
 import { ProfileModule } from "./profile/profile.module";
@@ -40,6 +42,8 @@ import { environment } from '../environments/environment';
     MatIconModule,
     MatFormFieldModule,
     MatInputModule,
+    ParticlesModule,
+    ParticleEffectButtonModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],

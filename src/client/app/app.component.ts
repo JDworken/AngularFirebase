@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import { AngularFireAuth } from "@angular/fire/auth";
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from "@angular/fire/firestore";
@@ -12,13 +12,45 @@ import { auth } from 'firebase';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'app';
   email = new FormControl('', [Validators.required, Validators.email]);
   usersCollection: AngularFirestoreCollection<any>;
   users: Observable<any[]>;
+  particleStyle: object = {};
+  particleParams: object = {};
+  width = 100;
+  height = 100;
+
   constructor(public Pwa: PwaService, public afAuth: AngularFireAuth, public afFs: AngularFirestore){
 
+  }
+
+  ngOnInit():void{
+    this.particleStyle = {
+      'position': 'fixed',
+      'width': '100%',
+      'height': '100%',
+      'z-index': -1,
+      'top': 0,
+      'left': 0,
+      'right': 0,
+      'bottom': 0,
+    };
+
+    this.particleParams = {
+      particles: {
+        number: {
+            value: 200,
+        },
+        color: {
+            value: '#000000'
+        },
+        shape: {
+            type: 'triangle',
+        },
+      }
+    };
   }
 
   login():void{

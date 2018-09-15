@@ -1,4 +1,9 @@
 <!--The content below is only a placeholder and can be replaced.-->
+<particles 
+  [params]="particleParams" 
+  [style]="particleStyle"
+  [width]="width"
+  [height]="height"></particles>
 <div style="box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12); position: fixed; left:0; right: 0; top: 0;">
   <mat-toolbar color="primary" [style]="{'width':'100%'}">
     <div class="toolbar-container" style="display:flex; justify-content: space-between">
@@ -29,26 +34,29 @@
 <br/>
 <br/>
 <br/>
-<div style="text-align:center">
+<div style="background-color:white; margin-left:2%; margin-right:2%; padding:20px; box-shadow: 0 3px 5px -1px rgba(0,0,0,.2), 0 6px 10px 0 rgba(0,0,0,.14), 0 1px 18px 0 rgba(0,0,0,.12);">
+  <div style="text-align:center">
   
-  <img   width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    <img   width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+  </div>
+  <div style="font-weight:bolder">
+      Hello World! From Jason!
+  </div>
+  <form (ngSubmit)="createUser(email.value, password.value)" #newUserForm>
+    <mat-form-field>
+      <input matInput placeholder="Enter your email" [formControl]="email" required>
+      <mat-error *ngIf="email.invalid">ERROR</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input #password matInput placeholder="Password" type="password" required>
+    </mat-form-field>
+    <button mat-raised-button type="submit" >Create User</button>
+  </form>
+  <ul>
+    <li *ngFor="let user of users | async">
+      {{ user.name.first }}
+    </li>
+  </ul>
 </div>
-<div style="font-weight:bolder">
-    Hello World! From Jason!
-</div>
-<form (ngSubmit)="createUser(email.value, password.value)" #newUserForm>
-  <mat-form-field>
-    <input matInput placeholder="Enter your email" [formControl]="email" required>
-    <mat-error *ngIf="email.invalid">ERROR</mat-error>
-  </mat-form-field>
-  <mat-form-field>
-    <input #password matInput placeholder="Password" type="password" required>
-  </mat-form-field>
-  <button mat-raised-button type="submit" >Create User</button>
-</form>
-<ul>
-  <li *ngFor="let user of users | async">
-    {{ user.name.first }}
-  </li>
-</ul>
+
 <router-outlet></router-outlet>
