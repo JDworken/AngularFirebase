@@ -41,10 +41,10 @@ export class AppComponent implements OnInit {
     this.particleParams = {
       particles: {
         number: {
-            value: 200,
+            value: 100,
         },
         color: {
-            value: '#000000'
+            value: '#2e2e2e'
         },
         shape: {
             type: 'triangle',
